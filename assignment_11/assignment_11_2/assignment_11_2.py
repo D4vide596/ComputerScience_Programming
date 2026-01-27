@@ -128,7 +128,6 @@ class FileInterface:
 
 if __name__ == '__main__':
 
-
     list_of_people = FileInterface.load_people("people.csv")
     list_of_people_bmi = list_of_people.calculate_people_bmi()
     person_highest_bmi = list_of_people_bmi.calculate_highest_bmi()
