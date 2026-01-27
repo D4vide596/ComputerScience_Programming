@@ -84,9 +84,12 @@ class People:
 
 
 class FileInterface:
-    def load_people(self, file_name):
+
+
+
+    @staticmethod
+    def load_people(file_name):
         with open(file_name, "r") as file:
-            file.readline()
             list_of_people = []
             for row in file:
                 dati = row.strip().split(",")
@@ -97,7 +100,8 @@ class FileInterface:
                 list_of_people.append(person)
         return People(list_of_people)
 
-    def save_dict_to_csv(self, list_of_people, file_name):
+    @staticmethod
+    def save_dict_to_csv(list_of_people, file_name):
         if file_name == "bmi.csv":
             with open(file_name, "w") as file:
                 file.write("name, height, weight, gender, bmi\n")
@@ -121,13 +125,13 @@ class FileInterface:
                 average_female_person_bmi = list_of_people.calculate_female_average_bmi()
                 file.write(f"{average_person_bmi}, {average_male_person_bmi}, {average_female_person_bmi}\n")
         else:
-            print("wrong file name")
+            print(f"wrong file name: {file_name}")
 
 
 if __name__ == '__main__':
-    interface = FileInterface()
 
-    list_of_people = interface.load_people("people.csv")
+
+    list_of_people = FileInterface.load_people("people.csv")
     list_of_people_bmi = list_of_people.calculate_people_bmi()
     person_highest_bmi = list_of_people_bmi.calculate_highest_bmi()
     person_lowest_bmi = list_of_people_bmi.calculate_lowest_bmi()
@@ -135,7 +139,8 @@ if __name__ == '__main__':
     average_bmi_male =list_of_people_bmi.calculate_male_average_bmi()
     average_bmi_female = list_of_people_bmi.calculate_female_average_bmi()
 
-    interface.save_dict_to_csv(list_of_people_bmi,"bmi.csv")
-    interface.save_dict_to_csv(list_of_people_bmi, "highest_bmi.csv")
-    interface.save_dict_to_csv(list_of_people_bmi, "lowest_bmi.csv")
-    interface.save_dict_to_csv(list_of_people_bmi, "average_bmi.csv")
+    FileInterface.save_dict_to_csv(list_of_people_bmi,"bmi.csv")
+    FileInterface.save_dict_to_csv(list_of_people_bmi, "highest_bmi.csv")
+    FileInterface.save_dict_to_csv(list_of_people_bmi, "lowest_bmi.csv")
+    FileInterface.save_dict_to_csv(list_of_people_bmi, "average_bmi.csv")
+    FileInterface.save_dict_to_csv(list_of_people_bmi, "try_error.csv")
