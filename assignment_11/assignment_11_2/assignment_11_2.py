@@ -85,8 +85,6 @@ class People:
 
 class FileInterface:
 
-
-
     @staticmethod
     def load_people(file_name):
         with open(file_name, "r") as file:
