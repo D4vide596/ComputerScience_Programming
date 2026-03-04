@@ -136,7 +136,7 @@ if __name__ == '__main__':
     average_bmi_male =list_of_people_bmi.calculate_male_average_bmi()
     average_bmi_female = list_of_people_bmi.calculate_female_average_bmi()
 
-    FileInterface.save_dict_to_csv(list_of_people_bmi,"bmi.csv")
+    FileInterface.save_dict_to_csv(list_of_people_bmi, "bmi.csv")
     FileInterface.save_dict_to_csv(list_of_people_bmi, "highest_bmi.csv")
     FileInterface.save_dict_to_csv(list_of_people_bmi, "lowest_bmi.csv")
     FileInterface.save_dict_to_csv(list_of_people_bmi, "average_bmi.csv")
